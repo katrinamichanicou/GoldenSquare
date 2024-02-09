@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 twilio = "*"
+pytest = "*"
 
 [dev-packages]
 

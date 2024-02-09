@@ -16,5 +16,7 @@ class Dish:
     def update_price(self, new_price):
         self.dish["dish_price"] = new_price
 
-    def update_availability(self, units_sold):
-        pass
+    def update_availability(self, order):
+        units_sold = order.order_summary[self.name]
+        if units_sold > 0:
+            self.dish["availability"] = self.dish["availability"] - order.order_summary[self.name]

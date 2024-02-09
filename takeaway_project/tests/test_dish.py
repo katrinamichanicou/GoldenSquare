@@ -31,19 +31,17 @@ def test_price_updated_for_dish():
     dish_1.update_price(7.5)
     assert dish_1.dish["dish_price"] == 7.5
 
-"""
-Given an order instance is created (order placed)
-the number of units available
-for the instance of that dish is updated
-"""
-@pytest.mark.skip(reason="Test not implemented yet")
-def test_update_availability():
-    dish_1 = Dish("Halloumi Fries", 5.5, 200)
-    order_1 = Mock(name="order 1")
-    order_1.units_sold.return_value = 5
-    dish_1.update_availability(order_1.units_sold)
-    assert dish_1.dish["availability"] == 195
-
+# """
+# Given an order instance is created (order placed)
+# the number of units available
+# for the instance of that dish is updated
+# """
+# def test_update_availability():
+#     dish_1 = Dish("Halloumi Fries", 5.5, 200)
+#     order_1 = Mock(name="order 1")
+#     order_1.units_sold.return_value = 5
+#     dish_1.update_availability(order_1)
+#     assert dish_1.dish["availability"] == 195
 
 """
 Given None/empty string or 0

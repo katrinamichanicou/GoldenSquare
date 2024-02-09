@@ -16,3 +16,4 @@ def test_dishes_added_to_dishes():
     menu.add_dish(dish_2)
     menu.add_dish(dish_3)
     assert menu.dishes == [dish_1, dish_2, dish_3]
+
