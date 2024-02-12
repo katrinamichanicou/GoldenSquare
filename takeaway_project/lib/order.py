@@ -1,5 +1,5 @@
-# from dish import Dish
-# from menu import Menu
+from dish import Dish
+from menu import Menu
 import os
 from datetime import datetime, timedelta
 from twilio.rest import Client
@@ -13,7 +13,7 @@ class Order:
     def print_menu(self):
         menu_list = f"\nMENU:\n{self.menu.format_menu()}"
         print(menu_list)
-        user_input = input("To start a new order select enter, else type - to exit\n")
+        user_input = input("To start a new order select ENTER, or type '-' to exit\n")
         if user_input == "":
             self.add_dish_to_order()
         elif user_input == "-":
@@ -21,7 +21,7 @@ class Order:
 
     
     def add_dish_to_order(self):
-        input_dish = input(f"Please enter the number of the dish you want to order:\n")
+        input_dish = input(f"Please enter the NUMBER of the dish you want to order:\n")
 
         for dish in self.menu.dishes:
             units_available = dish.dish["availability"]
@@ -39,13 +39,13 @@ class Order:
                         print(dish_added_confirmation)
                     elif response.lower() == "n":
                         self.add_dish_to_order()
-                
-                
+                dish_added_confirmation = f"{quantity} portions of {dish.name} have been added to your order\n"
+                print(dish_added_confirmation)
                 self.order_summary.setdefault(dish.name, int(quantity))
                 dish.update_availability(self)
-        next_input = input("Type 'add' if you would like to add another dish or enter to confirm order and see your receipt\n")
+        next_input = input("Type 'ADD' if you would like to add another dish or ENTER to confirm order and see your receipt\n")
         
-        if next_input == "add":
+        if next_input.lower() == "add":
             self.add_dish_to_order()
         else:
             self.print_receipt()
@@ -77,7 +77,7 @@ class Order:
                             to='+447791704072'
                             )
 
-        print(f"SID: {message.sid} Status: {message.status}")
+        return (f"SID: {message.sid} Status: {message.status}")
 
 
 # Find your Account SID and Auth Token at twilio.com/console
@@ -95,15 +95,15 @@ class Order:
 
 
 # EXAMPLE:
-# dish_1 = Dish("Halloumi Fries", 5.5, 200)
-# dish_2 = Dish("Halloumi & Cucumber Salad", 6, 100)
-# dish_3 = Dish("Halloumi Feast", 11.5, 50)
-# restaurant_menu_1 = Menu()
-# restaurant_menu_1.add_dish(dish_1)
-# restaurant_menu_1.add_dish(dish_2)
-# restaurant_menu_1.add_dish(dish_3)
-# order = Order(restaurant_menu_1)
-# order.print_menu()
+dish_1 = Dish("Halloumi Fries", 5.5, 200)
+dish_2 = Dish("Halloumi & Cucumber Salad", 6, 100)
+dish_3 = Dish("Halloumi Feast", 11.5, 50)
+restaurant_menu_1 = Menu()
+restaurant_menu_1.add_dish(dish_1)
+restaurant_menu_1.add_dish(dish_2)
+restaurant_menu_1.add_dish(dish_3)
+order = Order(restaurant_menu_1)
+order.print_menu()
 # print(dish_1.dish)
 # print(dish_2.dish)
 # print(dish_3.dish)

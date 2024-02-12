@@ -18,8 +18,7 @@ What went well:
 
 What didn't go well:
 
-    1. I don't think I did a great job in the planning stage.
-       I could have spent more time planning. 
+    1. I don't think I did a great job in the planning stage / could have spent more time planning. 
        When it came to execution I changed a lot of the structure and some of the methods
        This made it clear that it wasn't well thought out
 
@@ -28,14 +27,14 @@ What didn't go well:
 
     3. I didn't have time to add in Exceptions / error messages
 
+
 Potential Improvements:
+
     1. I could add additional Exceptions / error messages to make the code more robust.
 
     2. I could learn how to test input().
 
-    3. I could potentitally refactor some of the code.
-
-    4. I could refactor the class structure.
+    3. I could review the code and class structure for potential refactoring.
 
 
 
