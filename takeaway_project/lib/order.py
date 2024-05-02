@@ -80,9 +80,9 @@ class Order:
         client = Client(account_sid, auth_token)
         delivery_time = (datetime.now() + timedelta(minutes = 40)).strftime("%H:%M")
         message = client.messages.create(
-                            from_='+447488896048',
+                            from_='+447xxxxxxxxx', # update with number provided by Twilio
                             body=f"Thank you! Your order was placed and will be delivered before {delivery_time}",
-                            to='+447791704072'
+                            to='+447xxxxxxxxx' # update with customer's number
                             )
 
         return (f"SID: {message.sid} Status: {message.status}")
