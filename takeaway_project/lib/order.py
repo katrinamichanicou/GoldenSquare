@@ -22,15 +22,23 @@ class Order:
     
     def add_dish_to_order(self):
         input_dish = input(f"Please enter the NUMBER of the dish you want to order:\n")
+        dish = self.menu.dishes[input_dish - 1]
+        
+        # //REFACTOR// Remove for loop - should be able to access dish dictionary from line 25 code instead
+        #* for dish in self.menu.dishes:
 
-        for dish in self.menu.dishes:
-            units_available = dish.dish["availability"]
-            if units_available == 0:
-                print("Sorry, this item has sold out")
-                continue
-                
-            if input_dish.strip() == str(self.menu.dishes.index(dish)+1):
+        # //REFACTOR// This units_available code should be moved elsewhere, since it does not take into account the input_dish.
+        # //REFACTOR// Therefore it will return 'Sorry, this item has sold out' if the first dish in the list has sold out
+        #*     units_available = dish.dish["availability"]
+        #*     if units_available == 0:
+        #*         print("Sorry, this item has sold out")
+        #*         continue
+
+        # //REFACTOR// Could use input_dish number as index for the dish in the menu (dictionary in list) - see line 25 - code already added
+        # //REFACTOR// Therefore can remove initial if statement (line 38)
+        #*    if input_dish.strip() == str(self.menu.dishes.index(dish)+1):
                 quantity = input(f"How many portions of {dish.name} would you like to add to your order?\n")
+                
                 if int(quantity) > units_available:
                     response = input(f"Sorry we only have {units_available}, do you want to add this to your order (Y/N)\n")
                     if response.lower() == "y":
@@ -62,7 +70,7 @@ class Order:
         
         order_total_format = f"TOTAL ---- £{order_total}\n"
         total_order_receipt_format = f"\nORDER RECEIPT:\n\n{receipt_items_format}\n\n{order_total_format}"
-        self.send_confirmation_text()
+        #self.send_confirmation_text()
         print(total_order_receipt_format)
         
     

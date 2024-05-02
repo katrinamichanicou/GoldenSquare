@@ -4,7 +4,8 @@ What went well:
 
     1. I was able to achieve all the user requirements.
 
-    2. I added in a few more methods, which I believe would improve usability.
+    2. I added in a few more methods, which I believe would improve usability. 
+      - however, I could have spent this time adding Exceptions / error messages instead.
 
     3. I was able to use techniques I had not dealt with before, 
        eg. input(), Twilio and a new datetime() use.
